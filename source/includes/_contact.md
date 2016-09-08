@@ -1,13 +1,14 @@
-# Group
+# Contact
 
-## Create group
+## Create Contact
 
 ```shell
 curl -X POST -H "Authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg==" -d '
 {
-"groupName": "This is a new group"
-}
-' "https://api.cpsms.lv/v2/addgroup"
+"groupId": 11969,
+"phoneNumber": "4596322222",
+"contactName": "Sonny"
+' "https://api.cpsms.lv/v2/addcontact"
 ```
 
 ```php
@@ -16,10 +17,10 @@ curl -X POST -H "Authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg==" 
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://api.cpsms.lv/v2/addgroup",  
+  CURLOPT_URL => "https://api.cpsms.lv/v2/addcontact",  
   CURLOPT_CUSTOMREQUEST => "POST",
   CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_POSTFIELDS => "{\n\"groupName\": \"This is a new group\"\n}",
+  CURLOPT_POSTFIELDS => "{\n\"groupId\": 11969,\n\"phoneNumber\": \"4596322222\",\n\"contactName\": \"Nuller\"\n}",
   CURLOPT_HTTPHEADER => array(
     "authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg=="
   ),
@@ -42,30 +43,32 @@ if ($err) {
 
 ```json
 {
-    "groupId": "11986",
-    "groupName": "This is a new group"
+    "Success": "Contact created/added in group"
 }
 ```
 
-This endpoint creates a group for contacts.
+This endpoint lest you create a new contact or add an existing to a group. If the contact exists in another group it will also be added to the new specified group.  
 
 ### HTTP Request
 <wrap>
-`POST https://api.cpsms.dk/v2/addgroup` <br> **Or** <br>
-`POST https://api.cpsms.dk/v2/addgroup/<groupName>`
+`POST https://api.cpsms.dk/v2/addcontact` <br> **Or** <br>
+`POST https://api.cpsms.dk/v2/addcontact/<groupId>/<phoneNumber>/<contactName>`
 </wrap>
 ### Parameters
 
 Parameter | Type | Description
 --------- | ------- | -----------
-groupName <br>**required** | string | Name of the group.
+groupId <br>**required** | int | Id of the group the contact is to be placed in.
+phoneNumber <br>**required** | string | The phone number for the contact starting with country code.
+contactName | string | Name/ identifier of the contact. 
 
 
-## List group(s)
+
+## List contact(s)
 
 ```shell
 curl -X GET -H "Authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg==" 
-' "https://api.cpsms.lv/v2/listgroups/<groupId>"
+' "https://api.cpsms.lv/v2/listcontacts/<groupId>"
 ```
 
 ```php
@@ -94,52 +97,55 @@ if ($err) {
 }
 ```
 
-```json
-[
-     {
-         "groupId": 11963,
-         "groupName": "Group #1"
-     },
-     {
-         "groupId": 11964,
-         "groupName": "Group #2"
-     },
-     {
-         "groupId": 11966,
-         "groupName": "Group #3"
-     }
-]
-```
 
 > The above command returns JSON structured like this:
 
+```json
+[
+    {
+        "phoneNumber": "4595222222",
+        "contactName": "Nuller"
+    },
+    {
+        "phoneNumber": "4596222222",
+        "contactName": "Buller Larsen"
+    },
+    {
+        "phoneNumber": "4588389000",
+        "contactName": "CPSMS help"
+    }
+]
+```
 
 
-This endpoint you can view all or just one specific group. <br>
-If you do not specify a <code>groupId</code> your response will be a list of all your groups.
+
+
+
+This endpoint can list all contacts in a given group. <br>
+You need to specify a <code>groupId</code>.
 
 ### HTTP Request
 
-`GET https://api.cpsms.dk/v2/listgroups/<groupId>`
+`GET https://api.cpsms.dk/v2/listcontacts/<groupId>`
 
 ### Parameters
 
 Parameter | Type | Description
 --------- | ------- | -----------
-groupId | int | Specifies a group.
+groupId <br>**required**| int | Specifies a group.
  
-<aside class="notice">
-If you specify a <code>groupId</code> the JSON resault is "a little different".  Omskrives!
-</aside>
 
 
-## Update group
+
+## Update contact
 
 ```shell
 curl -X PUT -H "Authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg==" -d '
 {
-"groupId": <group ID>
-"groupName": "<new name of group>"
+"phoneNumber": "4595222222" ,
+"groupId": 11969,
+"contactName":"New Nuller"
+}
 }
 ' "https://api.cpsms.lv/v2/updategroup"
 ```
@@ -153,7 +159,7 @@ curl_setopt_array($curl, array(
   CURLOPT_URL => "https://api.cpsms.lv/v2/updategroup",  
   CURLOPT_CUSTOMREQUEST => "PUT",
   CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_POSTFIELDS => "{\n    \"groupId\": <group ID>,\n    \"groupName\": \"<new name of group>\"\n    }",
+ CURLOPT_POSTFIELDS => "{\n\n\"phoneNumber\": \"4595222222\" ,\n\"groupId\": 11969,\n\"contactName\":\"New Nuller\"\n}\n",
   CURLOPT_HTTPHEADER => array(
     "authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg=="
   ),
@@ -176,7 +182,7 @@ if ($err) {
 
 ```json
 {
-    "Success": "groupId <groupId> Updated"
+    "Success": "Contact updated"
 }
 ```
 
@@ -184,25 +190,27 @@ This endpoint creates a group for contacts.
 
 ### HTTP Request
 <wrap>
-`PUT https://api.cpsms.dk/v2/updategroup` <br> **Or** <br>
-`PUT https://api.cpsms.dk/v2/updategroup/<group ID>/<new groupname>`
+`PUT https://api.cpsms.dk/v2/updatecontact` <br> **Or** <br>
+`PUT https://api.cpsms.dk/v2/updatecontact/<group ID>/<phoneNumber>/<new contactName>`
 </wrap>
 ### Parameters
 
 Parameter | Type | Description
 --------- | ------- | -----------
 groupId <br>**required** | int | The ID of the group. You can find the ID with the listGroups API function or at [CPSMS.dk](http://cpsms.dk).
-groupName <br>**required** | string | Name of the group.
+phoneNumber <br>**required** | string | The phone number for the contact starting with country code.
+contactName | string | Name of the contact.
 
 
-## Delete group
+## Delete contact
 
 ```shell
 curl -X DELETE -H "Authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg==" -d '
 {
-"groupId": <group ID>
+"phoneNumber": "4595222222" ,
+"groupId": 11969
 }
-' "https://api.cpsms.lv/v2/deletegroup"
+' "https://api.cpsms.lv/v2/deletecontact"
 ```
 
 ```php
@@ -211,10 +219,10 @@ curl -X DELETE -H "Authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg==
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://api.cpsms.lv/v2/deletegroup",  
+  CURLOPT_URL => "https://api.cpsms.lv/v2/deletecontact",  
   CURLOPT_CUSTOMREQUEST => "DELETE",
   CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_POSTFIELDS => "{\n    \"groupId\": <group ID>\n    }",
+  CURLOPT_POSTFIELDS => "{\n\n\"phoneNumber\": \"4595222222\" ,\n\"groupId\": 11969,\n\n}\n",
   CURLOPT_HTTPHEADER => array(
     "authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg=="
   ),
@@ -237,19 +245,20 @@ if ($err) {
 
 ```json
 {
-    "Success": "Group <groupId> deleted"
+    "Success": "Contact deleted/removed"
 }
 ```
 
-This endpoint you can delete a group. A group can only be deleted if it do not contain Contacts.
+This endpoint you can remove a contact from a group. If the contact is removed from all groups, it will be totally deleted.
 
 ### HTTP Request
 <wrap>
-`DELETE https://api.cpsms.dk/v2/deletegroup` <br> **Or** <br>
-`DELETE https://api.cpsms.dk/v2/deletegroup/<group ID>`
+`DELETE https://api.cpsms.dk/v2/deletecontact` <br> **Or** <br>
+`DELETE https://api.cpsms.dk/v2/deletecontact/<group ID>/<phoneNumber>`
 </wrap>
 ### Parameters
 
 Parameter | Type | Description
 --------- | ------- | -----------
 groupId <br>**required** | int | The ID of the group. You can find the ID with the listGroups API function or at [CPSMS.dk](http://cpsms.dk).
+phoneNumber <br>**required** | string | The contacts phone number. With country code.
