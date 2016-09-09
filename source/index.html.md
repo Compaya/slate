@@ -37,7 +37,7 @@ Protocol | HTTPS
 Authentication | Basic Authentication
 HTTP request methods | POST, GET, PUT, DELETE
 
-<aside class="success">
+<aside class="notice">
 Remember — Generate a API key in the <code>INDSTILLINGER -> API</code> section. 
 </aside>
 
@@ -48,8 +48,8 @@ You get the first 10 SMS points for free.
 
 ## Generate a API key
 
-You have to generate a API key at [cpsms.dk](https://cpsms.dk/login).
-This is the password to use the API.
+You have to generate a API key at [cpsms.dk](https://cpsms.dk/login).<br>
+This is the password to use the API.<br>
 Navigate to <code>INDSTILLINGER -> API</code> section and then generate a API key.
 
 <aside class="notice">

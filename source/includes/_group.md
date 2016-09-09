@@ -19,7 +19,7 @@ curl_setopt_array($curl, array(
   CURLOPT_URL => "https://api.cpsms.dk/v2/addgroup",  
   CURLOPT_CUSTOMREQUEST => "POST",
   CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_POSTFIELDS => "{\n\"groupName\": \"This is a new group\"\n}",
+  CURLOPT_POSTFIELDS => '{"groupName": "This is a new group"}',
   CURLOPT_HTTPHEADER => array(
     "authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg=="
   ),
@@ -50,10 +50,11 @@ if ($err) {
 This endpoint creates a group for contacts.
 
 ### HTTP Request
-<wrap>
-`POST https://api.cpsms.dk/v2/addgroup` <br> **Or** <br>
-`POST https://api.cpsms.dk/v2/addgroup/<groupName>`
-</wrap>
+<aside class="wrap_request">
+<code>POST</code> https://api.cpsms.dk/v2/addgroup <br>
+<code>POST</code> https://api.cpsms.dk/v2/addgroup/<code>&lt;groupName&gt;</code>
+</aside>
+
 ### Parameters
 
 Parameter | Type | Description
@@ -120,7 +121,9 @@ If you do not specify a <code>groupId</code> your response will be a list of all
 
 ### HTTP Request
 
-`GET https://api.cpsms.dk/v2/listgroups/<groupId>`
+<aside class="wrap_request">
+<code>GET</code> https://api.cpsms.dk/v2/listgroups/<code>&lt;groupId&gt;</code>
+</aside>
 
 ### Parameters
 
@@ -129,7 +132,7 @@ Parameter | Type | Description
 groupId | int | Specifies a group.
  
 <aside class="notice">
-If you specify a <code>groupId</code> the JSON resault is "a little different".  Omskrives!
+If you specify a <code>groupId</code> the JSON resault is "a little different".  Omskrives!?!?!
 </aside>
 
 
@@ -153,7 +156,7 @@ curl_setopt_array($curl, array(
   CURLOPT_URL => "https://api.cpsms.dk/v2/updategroup",  
   CURLOPT_CUSTOMREQUEST => "PUT",
   CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_POSTFIELDS => "{\n    \"groupId\": <group ID>,\n    \"groupName\": \"<new name of group>\"\n    }",
+  CURLOPT_POSTFIELDS => '{"groupId": <group ID>, "groupName": "<New name of group>" }',
   CURLOPT_HTTPHEADER => array(
     "authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg=="
   ),
@@ -183,10 +186,10 @@ if ($err) {
 This endpoint creates a group for contacts.
 
 ### HTTP Request
-<wrap>
-`PUT https://api.cpsms.dk/v2/updategroup` <br> **Or** <br>
-`PUT https://api.cpsms.dk/v2/updategroup/<group ID>/<new groupname>`
-</wrap>
+<aside class="wrap_request">
+<code>PUT</code> https://api.cpsms.dk/v2/updategroup <br>
+<code>PUT</code> https://api.cpsms.dk/v2/updategroup/<code>&lt;group ID&gt;</code>/<code>&lt;New groupname&gt;</code>
+</aside>
 ### Parameters
 
 Parameter | Type | Description

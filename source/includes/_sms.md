@@ -182,7 +182,7 @@ This endpoint lets you send a SMS as GET. Makes it possible to execute a SMS in 
 ### HTTP Request
 
 <aside class="wrap_request">
-<code>GET</code> username:APIkey@https://api.cpsms.dk/v2/simplesend/<code>&lt;to&gt;</code>/<code>&lt;message&gt;</code>/<code>&lt;from&gt</code>;
+<code>GET</code> username:APIkey@https://api.cpsms.dk/v2/simplesend/<code>&lt;to&gt;</code>/<code>&lt;message&gt;</code>/<code>&lt;from&gt;</code>
 </aside>
 
 ### Parameters
@@ -303,10 +303,10 @@ Every SMS with the specified <code>&lt;reference&gt;</code> that meets the crite
 
 Parameter | Type | Description
 --------- | ------- | -----------
-reference <br>**required** | string(32) | The identifier set by you.
+reference <br>**required** | string(32) | The identifier set by you, when you posted the SMS.
 
 <aside class="warning">
-When a SMS is deleted it cannot be recoverd, when you posted the SMS.
+When a SMS is deleted it cannot be recoverd.
 </aside>
 
 
