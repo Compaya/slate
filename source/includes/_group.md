@@ -7,7 +7,7 @@ curl -X POST -H "Authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg==" 
 {
 "groupName": "This is a new group"
 }
-' "https://api.cpsms.lv/v2/addgroup"
+' "https://api.cpsms.dk/v2/addgroup"
 ```
 
 ```php
@@ -16,7 +16,7 @@ curl -X POST -H "Authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg==" 
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://api.cpsms.lv/v2/addgroup",  
+  CURLOPT_URL => "https://api.cpsms.dk/v2/addgroup",  
   CURLOPT_CUSTOMREQUEST => "POST",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_POSTFIELDS => "{\n\"groupName\": \"This is a new group\"\n}",
@@ -65,7 +65,7 @@ groupName <br>**required** | string | Name of the group.
 
 ```shell
 curl -X GET -H "Authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg==" 
-' "https://api.cpsms.lv/v2/listgroups/<groupId>"
+' "https://api.cpsms.dk/v2/listgroups/<groupId>"
 ```
 
 ```php
@@ -74,7 +74,7 @@ curl -X GET -H "Authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg=="
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://api.cpsms.lv/v2/listgroups/<groupId>",
+  CURLOPT_URL => "https://api.cpsms.dk/v2/listgroups/<groupId>",
   CURLOPT_CUSTOMREQUEST => "GET",  
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_HTTPHEADER => array(
@@ -141,7 +141,7 @@ curl -X PUT -H "Authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg==" -
 "groupId": <group ID>
 "groupName": "<new name of group>"
 }
-' "https://api.cpsms.lv/v2/updategroup"
+' "https://api.cpsms.dk/v2/updategroup"
 ```
 
 ```php
@@ -150,7 +150,7 @@ curl -X PUT -H "Authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg==" -
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://api.cpsms.lv/v2/updategroup",  
+  CURLOPT_URL => "https://api.cpsms.dk/v2/updategroup",  
   CURLOPT_CUSTOMREQUEST => "PUT",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_POSTFIELDS => "{\n    \"groupId\": <group ID>,\n    \"groupName\": \"<new name of group>\"\n    }",
@@ -202,7 +202,7 @@ curl -X DELETE -H "Authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg==
 {
 "groupId": <group ID>
 }
-' "https://api.cpsms.lv/v2/deletegroup"
+' "https://api.cpsms.dk/v2/deletegroup"
 ```
 
 ```php
@@ -211,7 +211,7 @@ curl -X DELETE -H "Authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg==
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://api.cpsms.lv/v2/deletegroup",  
+  CURLOPT_URL => "https://api.cpsms.dk/v2/deletegroup",  
   CURLOPT_CUSTOMREQUEST => "DELETE",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_POSTFIELDS => "{\n    \"groupId\": <group ID>\n    }",

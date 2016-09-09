@@ -8,7 +8,7 @@ curl -X POST -H "Authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg==" 
 "groupId": 11969,
 "phoneNumber": "4596322222",
 "contactName": "Sonny"
-' "https://api.cpsms.lv/v2/addcontact"
+' "https://api.cpsms.dk/v2/addcontact"
 ```
 
 ```php
@@ -17,7 +17,7 @@ curl -X POST -H "Authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg==" 
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://api.cpsms.lv/v2/addcontact",  
+  CURLOPT_URL => "https://api.cpsms.dk/v2/addcontact",  
   CURLOPT_CUSTOMREQUEST => "POST",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_POSTFIELDS => "{\n\"groupId\": 11969,\n\"phoneNumber\": \"4596322222\",\n\"contactName\": \"Nuller\"\n}",
@@ -68,7 +68,7 @@ contactName | string | Name/ identifier of the contact.
 
 ```shell
 curl -X GET -H "Authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg==" 
-' "https://api.cpsms.lv/v2/listcontacts/<groupId>"
+' "https://api.cpsms.dk/v2/listcontacts/<groupId>"
 ```
 
 ```php
@@ -77,7 +77,7 @@ curl -X GET -H "Authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg=="
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://api.cpsms.lv/v2/listgroups/<groupId>",
+  CURLOPT_URL => "https://api.cpsms.dk/v2/listgroups/<groupId>",
   CURLOPT_CUSTOMREQUEST => "GET",  
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_HTTPHEADER => array(
@@ -147,7 +147,7 @@ curl -X PUT -H "Authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg==" -
 "contactName":"New Nuller"
 }
 }
-' "https://api.cpsms.lv/v2/updategroup"
+' "https://api.cpsms.dk/v2/updategroup"
 ```
 
 ```php
@@ -156,7 +156,7 @@ curl -X PUT -H "Authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg==" -
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://api.cpsms.lv/v2/updategroup",  
+  CURLOPT_URL => "https://api.cpsms.dk/v2/updategroup",  
   CURLOPT_CUSTOMREQUEST => "PUT",
   CURLOPT_RETURNTRANSFER => true,
  CURLOPT_POSTFIELDS => "{\n\n\"phoneNumber\": \"4595222222\" ,\n\"groupId\": 11969,\n\"contactName\":\"New Nuller\"\n}\n",
@@ -210,7 +210,7 @@ curl -X DELETE -H "Authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg==
 "phoneNumber": "4595222222" ,
 "groupId": 11969
 }
-' "https://api.cpsms.lv/v2/deletecontact"
+' "https://api.cpsms.dk/v2/deletecontact"
 ```
 
 ```php
@@ -219,7 +219,7 @@ curl -X DELETE -H "Authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg==
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://api.cpsms.lv/v2/deletecontact",  
+  CURLOPT_URL => "https://api.cpsms.dk/v2/deletecontact",  
   CURLOPT_CUSTOMREQUEST => "DELETE",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_POSTFIELDS => "{\n\n\"phoneNumber\": \"4595222222\" ,\n\"groupId\": 11969,\n\n}\n",

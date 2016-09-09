@@ -38,7 +38,7 @@ Authentication | Basic Authentication
 HTTP request methods | POST, GET, PUT, DELETE
 
 <aside class="success">
-Remember — Generate a API key in the <code>INDSTILLINGER -> API section</code> at [cpsms.dk](https://cpsms.dk/login)
+Remember — Generate a API key in the <code>INDSTILLINGER -> API</code> section. 
 </aside>
 
 ## User account
@@ -53,7 +53,7 @@ This is the password to use the API.
 Navigate to <code>INDSTILLINGER -> API</code> section and then generate a API key.
 
 <aside class="notice">
-For extra security you can turn on IP validating and add the IP(s) you want to allow.
+For extra security you can turn on IP validating and add the IP adresses('s) you want to allow.
 </aside>
 
 
@@ -64,12 +64,12 @@ For extra security you can turn on IP validating and add the IP(s) you want to a
 
 ```shell
 # With cURL, you can just pass the correct header with each request
-curl "https://api.cpsms.lv/v2/endpoint"
+curl "https://api.cpsms.dk/v2/endpoint"
   -H "Authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg=="
 ```
 
 ```php
-# Adding a cURL header
+
 <?php
 CURLOPT_HTTPHEADER => array(
     "Authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg==",
@@ -89,8 +89,7 @@ CPSMS uses Basic Authorization to access the API. It's a base64 of your CPSMS us
 `Authorization: Basic <base64 encoding>`
 
 <aside class="notice">
-You must replace <code>&lt;base64 encoding&gt;</code> with your personal API login credentials as base64 encoding.
+Replace <code>&lt;base64 encoding&gt;</code> with your personal API login credentials as base64 encoding.
 </aside>
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
 

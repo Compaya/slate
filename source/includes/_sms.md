@@ -7,7 +7,7 @@ curl -X POST -H "Authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg==" 
 {
 "to":["4522334488","4577777777","4723434375"], "message": "This is the message text body", "from": "Compaya", "timestamp": 1474970400
 }
-' "https://api.cpsms.lv/v2/send"
+' "https://api.cpsms.dk/v2/send"
 ```
 
 ```php
@@ -16,10 +16,10 @@ curl -X POST -H "Authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg==" 
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://api.cpsms.lv/v2/send",  
+  CURLOPT_URL => "https://api.cpsms.dk/v2/send",  
   CURLOPT_CUSTOMREQUEST => "POST",
   CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_POSTFIELDS => "{\"to\":[\"4522334488\",\"4577777777\",\"4523434375\"], \"message\": \"This is the message text body\", \"from\": \"Compaya\", \"timestamp\": 1474970400}",
+  CURLOPT_POSTFIELDS => '{"to":["4522334488","4577777777","4523434375"], "message": "This is the message text body", "from": "Compaya", "timestamp": 1474970400}',
   CURLOPT_HTTPHEADER => array(
     "authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg=="
   ),
@@ -67,9 +67,9 @@ if ($err) {
 This endpoint lets you send a SMS to one or multiple recipients.
 
 ### HTTP Request
-
-`POST https://api.cpsms.dk/v2/send`
-
+<aside class="wrap_request">
+<code>POST</code> https://api.cpsms.dk/v2/send
+</aside>
 ### Parameters
 
 Parameter | Type | Description
@@ -78,7 +78,7 @@ to <br>**required** | string or array | The recipient(s) of the message. The num
 message <br>**required** | string | The body text of the SMS message.
 from | string | Sender name or number.
 timestamp | int <br>(unix timestamp) | If specified the message is send at given time.
-encoding | string | Default is <code>UTF-8</code>. alternative <code>ISO-8859-1</code>.
+encoding | string | Default is <code>UTF-8</code>. Alternative <code>ISO-8859-1</code>.
 dlr_url | string | If specified you will receive delivery reports to the given URL.
 flash | int | Default is <code>0</code>. Specifies if the SMS is a flash SMS.
 reference | string(32) | This can be used as your identifier. A ID from your own system. 
@@ -92,7 +92,7 @@ curl -X POST -H "Authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg==" 
 {
 "to_group":12345, "message": "This is the message text body", "from": "Compaya", "timestamp": 1474970400
 }
-' "https://api.cpsms.lv/v2/sendgroup"
+' "https://api.cpsms.dk/v2/sendgroup"
 ```
 
 ```php
@@ -101,10 +101,10 @@ curl -X POST -H "Authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg==" 
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://api.cpsms.lv/v2/sendgroup",  
+  CURLOPT_URL => "https://api.cpsms.dk/v2/sendgroup",  
   CURLOPT_CUSTOMREQUEST => "POST",
   CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_POSTFIELDS => "{\"to_group\":12345, \"message\": \"This is the message text body\", \"from\": \"Compaya\", \"timestamp\": 1474970400}",
+  CURLOPT_POSTFIELDS => '{"to_group":12345, "message": "This is the message text body", "from": "Compaya", "timestamp": 1474970400}',
   CURLOPT_HTTPHEADER => array(
     "authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg=="
   ),
@@ -153,7 +153,9 @@ This endpoint lets you send a SMS to recipients you have created as contacts in 
 
 ### HTTP Request
 
-`POST https://api.cpsms.dk/v2/sendgroup`
+<aside class="wrap_request">
+<code>POST</code> https://api.cpsms.dk/v2/sendgroup
+</aside>
 
 ### Parameters
 
@@ -163,7 +165,7 @@ to_group <br>**required** | int | Specify the Group ID where you have your conta
 message <br>**required** | string | The body text of the SMS message.
 from | string | Sender name or number.
 timestamp | int <br>(unix timestamp) | If specified the message is send at given time.
-encoding | string | Default is <code>UTF-8</code>. alternative <code>ISO-8859-1</code>.
+encoding | string | Default is <code>UTF-8</code>. Alternative <code>ISO-8859-1</code>.
 dlr_url | string | If specified you will receive delivery reports to the given URL.
 flash | int | Default is <code>0</code>. Specifies if the SMS is a flash SMS.
 reference | string(32) | This can be used as your identifier. A ID from your own system.
@@ -179,7 +181,9 @@ This endpoint lets you send a SMS as GET. Makes it possible to execute a SMS in 
 
 ### HTTP Request
 
-`GET username:APIkey@https://api.cpsms.dk/v2/simplesend/<to>/<message>/<from>`
+<aside class="wrap_request">
+<code>GET</code> username:APIkey@https://api.cpsms.dk/v2/simplesend/<code>&lt;to&gt;</code>/<code>&lt;message&gt;</code>/<code>&lt;from&gt</code>;
+</aside>
 
 ### Parameters
 
@@ -237,13 +241,15 @@ This endpoint lets you see how much credit you have left on your CPSMS.dk accoun
 
 ### HTTP Request
 
-`GET https://api.cpsms.dk/v2/creditvalue`
+<aside class="wrap_request">
+<code>GET</code> https://api.cpsms.dk/v2/creditvalue
+</aside>
 
 
 ## Delete SMS
 
 ```shell
-curl -X DELETE -H "Authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg==" "https://api.cpsms.lv/v2/deletesms"
+curl -X DELETE -H "Authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg==" "https://api.cpsms.dk/v2/deletesms"
 ```
 
 ```php
@@ -252,7 +258,7 @@ curl -X DELETE -H "Authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg==
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://api.cpsms.lv/v2/deletesms",  
+  CURLOPT_URL => "https://api.cpsms.dk/v2/deletesms",  
   CURLOPT_CUSTOMREQUEST => "DELETE",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_POSTFIELDS => "",
@@ -289,7 +295,9 @@ Every SMS with the specified <code>&lt;reference&gt;</code> that meets the crite
 
 ### HTTP Request
 
-`DELETE https://api.cpsms.dk/v2/deletesms/<reference>`
+<aside class="wrap_request">
+<code>DELETE</code> https://api.cpsms.dk/v2/deletesms/<code>&lt;reference&gt;</code>
+</aside>
 
 ### Parameters
 
