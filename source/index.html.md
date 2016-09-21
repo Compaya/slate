@@ -14,6 +14,7 @@ includes:
   - sms
   - group
   - contact
+  - log
   - errors
 
 search: true
@@ -35,7 +36,7 @@ Host | api.cpsms.dk/v2
 Port | 443
 Protocol | HTTPS
 Authentication | Basic Authentication
-HTTP request methods | POST, GET, PUT, DELETE
+HTTP request methods | <code class="post">POST</code>  <code class="get">GET</code>  <code class="put">PUT</code>  <code class="delete">DELETE</code>
 
 <aside class="notice">
 Remember — Generate a API key in the <code>INDSTILLINGER -> API</code> section. 
@@ -57,6 +58,18 @@ For extra security you can turn on IP validating and add the IP adresses('s) you
 </aside>
 
 
+# Generally
+
+Parameters can be added to the URL or as JSON post fields. Except for SMS and GroupSMS endpoints. <br>
+It is not possible to mix.<br><br>
+The HTTP requests show examples with parameters set in the url.<br>
+The code examples is as post fields.
+ 
+
+ 
+
+
+
 # Authentication
 
 > To authorize, use this code:
@@ -71,9 +84,11 @@ curl "https://api.cpsms.dk/v2/endpoint"
 ```php
 
 <?php
+$username = "Your CPSMS username";
+$apiKey = "Your generated key";
+
 CURLOPT_HTTPHEADER => array(
-    "Authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg==",
-    "cache-control: no-cache" 
+    "Authorization: Basic " . base64_encode($username . ':' . $apiKey)
 );
 ```
 
@@ -81,7 +96,7 @@ CURLOPT_HTTPHEADER => array(
 
 
 
-> Make sure to replace Authorization with your own API user and key.
+> Make sure to replace $username and $apiKey with your own credentials.
 
 CPSMS uses Basic Authorization to access the API. It's a base64 of your CPSMS username and a API key you need to generate on CPSMS.dk.
 

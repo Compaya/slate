@@ -26,14 +26,15 @@ curl_setopt_array($curl, array(
 ));
 
 $response = curl_exec($curl);
-$err = curl_error($curl);
+$httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
 curl_close($curl);
 
-if ($err) {
-  echo "cURL Error #:" . $err;
+if($httpCode == 200) {
+	echo 'OK: ' . $response;
 } else {
-  echo $response;
+
+	echo 'Read response message for details: ' . $response;
 }
 ```
 
@@ -51,8 +52,8 @@ This endpoint creates a group for contacts.
 
 ### HTTP Request
 <aside class="wrap_request">
-<code>POST</code> https://api.cpsms.dk/v2/addgroup <br>
-<code>POST</code> https://api.cpsms.dk/v2/addgroup/<code>&lt;groupName&gt;</code>
+<code class="post">POST</code> https://api.cpsms.dk/v2/addgroup <br>
+<code class="post">POST</code> https://api.cpsms.dk/v2/addgroup/<code>&lt;groupName&gt;</code>
 </aside>
 
 ### Parameters
@@ -84,14 +85,15 @@ curl_setopt_array($curl, array(
 ));
 
 $response = curl_exec($curl);
-$err = curl_error($curl);
+$httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
 curl_close($curl);
 
-if ($err) {
-  echo "cURL Error #:" . $err;
+if($httpCode == 200) {
+	echo 'OK: ' . $response;
 } else {
-  echo $response;
+
+	echo 'Read response message for details: ' . $response;
 }
 ```
 
@@ -99,15 +101,15 @@ if ($err) {
 [
      {
          "groupId": 11963,
-         "groupName": "Group #1"
+         "groupName": "Group 1"
      },
      {
          "groupId": 11964,
-         "groupName": "Group #2"
+         "groupName": "Group 2"
      },
      {
          "groupId": 11966,
-         "groupName": "Group #3"
+         "groupName": "Group 3"
      }
 ]
 ```
@@ -117,12 +119,12 @@ if ($err) {
 
 
 This endpoint you can view all or just one specific group. <br>
-If you do not specify a <code>groupId</code> your response will be a list of all your groups.
+If you specify a <code>groupId</code> your response will be for the specified group. (In the future there will be more details in the response result).
 
 ### HTTP Request
 
 <aside class="wrap_request">
-<code>GET</code> https://api.cpsms.dk/v2/listgroups/<code>&lt;groupId&gt;</code>
+<code class="get">GET</code> https://api.cpsms.dk/v2/listgroups/<code>&lt;groupId&gt;</code>
 </aside>
 
 ### Parameters
@@ -132,7 +134,7 @@ Parameter | Type | Description
 groupId | int | Specifies a group.
  
 <aside class="notice">
-If you specify a <code>groupId</code> the JSON resault is "a little different".  Omskrives!?!?!
+If you specify a <code>groupId</code> the JSON resault is 
 </aside>
 
 
@@ -163,14 +165,15 @@ curl_setopt_array($curl, array(
 ));
 
 $response = curl_exec($curl);
-$err = curl_error($curl);
+$httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
 curl_close($curl);
 
-if ($err) {
-  echo "cURL Error #:" . $err;
+if($httpCode == 200) {
+	echo 'OK: ' . $response;
 } else {
-  echo $response;
+
+	echo 'Read response message for details: ' . $response;
 }
 ```
 
@@ -187,8 +190,8 @@ This endpoint creates a group for contacts.
 
 ### HTTP Request
 <aside class="wrap_request">
-<code>PUT</code> https://api.cpsms.dk/v2/updategroup <br>
-<code>PUT</code> https://api.cpsms.dk/v2/updategroup/<code>&lt;group ID&gt;</code>/<code>&lt;New groupname&gt;</code>
+<code class="put">PUT</code> https://api.cpsms.dk/v2/updategroup <br>
+<code class="put">PUT</code> https://api.cpsms.dk/v2/updategroup/<code>&lt;groupId&gt;</code>/<code>&lt;New groupName&gt;</code>
 </aside>
 ### Parameters
 
@@ -224,14 +227,15 @@ curl_setopt_array($curl, array(
 ));
 
 $response = curl_exec($curl);
-$err = curl_error($curl);
+$httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
 curl_close($curl);
 
-if ($err) {
-  echo "cURL Error #:" . $err;
+if($httpCode == 200) {
+	echo 'OK: ' . $response;
 } else {
-  echo $response;
+
+	echo 'Read response message for details: ' . $response;
 }
 ```
 
@@ -247,10 +251,10 @@ if ($err) {
 This endpoint you can delete a group. A group can only be deleted if it do not contain Contacts.
 
 ### HTTP Request
-<wrap>
-`DELETE https://api.cpsms.dk/v2/deletegroup` <br> **Or** <br>
-`DELETE https://api.cpsms.dk/v2/deletegroup/<group ID>`
-</wrap>
+<aside class="wrap_request">
+<code class="delete">DELETE</code> https://api.cpsms.dk/v2/deletegroup<br>
+<code class="delete">DELETE</code> https://api.cpsms.dk/v2/deletegroup/<code>&lt;groupId&gt;</code>
+</aside>
 ### Parameters
 
 Parameter | Type | Description

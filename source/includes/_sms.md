@@ -5,7 +5,7 @@
 ```shell
 curl -X POST -H "Authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg==" -d '
 {
-"to":["4522334488","4577777777","4723434375"], "message": "This is the message text body", "from": "Compaya", "timestamp": 1474970400
+"to":"4522334488", "message": "This is the message text body", "from": "Compaya", "timestamp": 1474970400
 }
 ' "https://api.cpsms.dk/v2/send"
 ```
@@ -19,21 +19,22 @@ curl_setopt_array($curl, array(
   CURLOPT_URL => "https://api.cpsms.dk/v2/send",  
   CURLOPT_CUSTOMREQUEST => "POST",
   CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_POSTFIELDS => '{"to":["4522334488","4577777777","4523434375"], "message": "This is the message text body", "from": "Compaya", "timestamp": 1474970400}',
+  CURLOPT_POSTFIELDS => '{"to":"4522334488", "message": "This is the message text body", "from": "Compaya", "timestamp": 1474970400}',
   CURLOPT_HTTPHEADER => array(
     "authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg=="
   ),
 ));
 
 $response = curl_exec($curl);
-$err = curl_error($curl);
+$httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
 curl_close($curl);
 
-if ($err) {
-  echo "cURL Error #:" . $err;
+if($httpCode == 200) {
+	echo 'OK: ' . $response;
 } else {
-  echo $response;
+
+	echo 'Read response message for details: ' . $response;
 }
 ```
 
@@ -43,23 +44,30 @@ if ($err) {
 ```json
 {
     "success": [
-        [
-            {
-                "to": "4522334488",
-                "price": "1",
-                "countryCode": "1"
-            },
-            {
-                "to": "4577777777",
-                "price": "1",
-                "countryCode": "1"
-            },
-            {
-                "to": "4523434375",
-                "price": "1",
-                "countryCode": "1"
-            }
-        ]
+        {
+            "to": "4522334488",
+            "cost": 1
+        }
+    ]
+}
+```
+
+> If you specify "to" as array with multiple recipients and something is wrong with one or more phone numbers, your response will return like this:
+
+```json
+{
+    "success": [
+        {
+            "to": "4522334488",
+            "cost": 1
+        }
+    ],
+    "error": [
+        {
+            "errorCode": 400,
+            "errMsg": "Phone number length and country code do not match.",
+            "to": "21314181"
+        }
     ]
 }
 ```
@@ -68,8 +76,9 @@ This endpoint lets you send a SMS to one or multiple recipients.
 
 ### HTTP Request
 <aside class="wrap_request">
-<code>POST</code> https://api.cpsms.dk/v2/send
+<code class="post">POST</code> https://api.cpsms.dk/v2/send
 </aside>
+
 ### Parameters
 
 Parameter | Type | Description
@@ -83,6 +92,11 @@ dlr_url | string | If specified you will receive delivery reports to the given U
 flash | int | Default is <code>0</code>. Specifies if the SMS is a flash SMS.
 reference | string(32) | This can be used as your identifier. A ID from your own system. 
 
+
+<aside class="notice">
+If you specify multiple <code>&lt;to&gt;</code> and you have an error along with success. Your HTTP header response code will be 207 Multi-status. <br>
+You are adviced to go thrue your error(s) before sending to the same recipients.
+</aside>
 
 
 ## Send to group
@@ -111,14 +125,15 @@ curl_setopt_array($curl, array(
 ));
 
 $response = curl_exec($curl);
-$err = curl_error($curl);
+$httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
 curl_close($curl);
 
-if ($err) {
-  echo "cURL Error #:" . $err;
+if($httpCode == 200) {
+	echo 'OK: ' . $response;
 } else {
-  echo $response;
+
+	echo 'Read response message for details: ' . $response;
 }
 ```
 
@@ -128,23 +143,18 @@ if ($err) {
 ```json
 {
     "success": [
-        [
-            {
-                "to": "4522334488",
-                "price": "1",
-                "countryCode": "1"
-            },
-            {
-                "to": "4577777777",
-                "price": "1",
-                "countryCode": "1"
-            },
-            {
-                "to": "4523434375",
-                "price": "1",
-                "countryCode": "1"
-            }
-        ]
+        {
+            "to": "4522334488",
+            "cost": 1
+        },
+        {
+            "to": "4522334499",
+            "cost": 1
+        },
+        {
+            "to": "46522334455",
+            "cost": 1.6
+        }        
     ]
 }
 ```
@@ -154,7 +164,7 @@ This endpoint lets you send a SMS to recipients you have created as contacts in 
 ### HTTP Request
 
 <aside class="wrap_request">
-<code>POST</code> https://api.cpsms.dk/v2/sendgroup
+<code class="post">POST</code> https://api.cpsms.dk/v2/sendgroup
 </aside>
 
 ### Parameters
@@ -182,7 +192,7 @@ This endpoint lets you send a SMS as GET. Makes it possible to execute a SMS in 
 ### HTTP Request
 
 <aside class="wrap_request">
-<code>GET</code> username:APIkey@https://api.cpsms.dk/v2/simplesend/<code>&lt;to&gt;</code>/<code>&lt;message&gt;</code>/<code>&lt;from&gt;</code>
+<code class="get">GET</code> username:APIkey@https://api.cpsms.dk/v2/simplesend/<code>&lt;to&gt;</code>/<code>&lt;message&gt;</code>/<code>&lt;from&gt;</code>
 </aside>
 
 ### Parameters
@@ -217,14 +227,15 @@ curl_setopt_array($curl, array(
 ));
 
 $response = curl_exec($curl);
-$err = curl_error($curl);
+$httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
 curl_close($curl);
 
-if ($err) {
-  echo "cURL Error #:" . $err;
+if($httpCode == 200) {
+	echo 'OK: ' . $response;
 } else {
-  echo $response;
+
+	echo 'Read response message for details: ' . $response;
 }
 ```
 
@@ -242,7 +253,7 @@ This endpoint lets you see how much credit you have left on your CPSMS.dk accoun
 ### HTTP Request
 
 <aside class="wrap_request">
-<code>GET</code> https://api.cpsms.dk/v2/creditvalue
+<code class="get">GET</code> https://api.cpsms.dk/v2/creditvalue
 </aside>
 
 
@@ -268,14 +279,15 @@ curl_setopt_array($curl, array(
 ));
 
 $response = curl_exec($curl);
-$err = curl_error($curl);
+$httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
 curl_close($curl);
 
-if ($err) {
-  echo "cURL Error #:" . $err;
+if($httpCode == 200) {
+	echo 'OK: ' . $response;
 } else {
-  echo $response;
+
+	echo 'Read response message for details: ' . $response;
 }
 ```
 
@@ -296,7 +308,7 @@ Every SMS with the specified <code>&lt;reference&gt;</code> that meets the crite
 ### HTTP Request
 
 <aside class="wrap_request">
-<code>DELETE</code> https://api.cpsms.dk/v2/deletesms/<code>&lt;reference&gt;</code>
+<code class="delete">DELETE</code> https://api.cpsms.dk/v2/deletesms/<code>&lt;reference&gt;</code>
 </aside>
 
 ### Parameters
