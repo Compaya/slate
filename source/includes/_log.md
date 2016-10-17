@@ -73,7 +73,7 @@ You can go back 3 month total, from today. If you do not add start and end date.
 It's possible to add a receiver with and without start/end dates.
 
 <aside class="notice">
-This request is restricted to 1 request every 2 minutes.  
+This request is restricted to 1 request every 2 minutes.
 </aside>
 
 ### HTTP Request

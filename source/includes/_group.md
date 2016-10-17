@@ -67,7 +67,7 @@ groupName <br>**required** | string | Name of the group.
 
 ```shell
 curl -X GET -H "Authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg==" 
-' "https://api.cpsms.dk/v2/listgroups/<groupId>"
+' "https://api.cpsms.dk/v2/listgroups"
 ```
 
 ```php
@@ -76,7 +76,7 @@ curl -X GET -H "Authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg=="
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://api.cpsms.dk/v2/listgroups/<groupId>",
+  CURLOPT_URL => "https://api.cpsms.dk/v2/listgroups",
   CURLOPT_CUSTOMREQUEST => "GET",  
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_HTTPHEADER => array(
@@ -118,24 +118,14 @@ if($httpCode == 200) {
 
 
 
-This endpoint you can view all or just one specific group. <br>
-If you specify a <code>groupId</code> your response will be for the specified group. (In the future there will be more details in the response result).
+This endpoint you can view all your groups. 
 
 ### HTTP Request
 
 <aside class="wrap_request">
-<code class="get">GET</code> https://api.cpsms.dk/v2/listgroups/<code>&lt;groupId&gt;</code>
+<code class="get">GET</code> https://api.cpsms.dk/v2/listgroups
 </aside>
 
-### Parameters
-
-Parameter | Type | Description
---------- | ------- | -----------
-groupId | int | Specifies a group.
- 
-<aside class="notice">
-If you specify a <code>groupId</code> the JSON resault is 
-</aside>
 
 
 ## Update group
@@ -186,7 +176,7 @@ if($httpCode == 200) {
 }
 ```
 
-This endpoint creates a group for contacts.
+This endpoint update a group. (For now only the name.)
 
 ### HTTP Request
 <aside class="wrap_request">

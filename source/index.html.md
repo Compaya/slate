@@ -22,15 +22,11 @@ search: true
 
 # Welcome 
 
-To the CPSMS.DK API. 
-Here you will find descriptions of the almost endless possibilities with our API.
-
-So indulge yourself in the plethora of opportunities for letting your programs interact with CPSMS.
-
-"CPSMS - I'm loving it" 
+Get started sending SMS from your own system via CPSMS.dk API.
+This is the documentation listing all endpoints / methods. 
 
 # Getting started
-(Something) | Value 
+. | .
 --------- | ------- 
 Host | api.cpsms.dk/v2
 Port | 443
@@ -60,10 +56,10 @@ For extra security you can turn on IP validating and add the IP adresses('s) you
 
 # Generally
 
-Parameters can be added to the URL or as JSON post fields. Except for SMS and GroupSMS endpoints. <br>
-It is not possible to mix.<br><br>
-The HTTP requests show examples with parameters set in the url.<br>
-The code examples is as post fields.
+Data can be send as GET parameters or posted as a JSON object. Except for SMS and GroupSMS endpoints. - these requires data to be send as JSON objects<br>
+It is not possible to use a mix of GET parameters and a JSON object.<br><br>
+The HTTP requests show examples with parameters set as GET.<br>
+The code examples is as JSON objects.
  
 
  
@@ -98,13 +94,13 @@ CURLOPT_HTTPHEADER => array(
 
 > Make sure to replace $username and $apiKey with your own credentials.
 
-CPSMS uses Basic Authorization to access the API. It's a base64 of your CPSMS username and a API key you need to generate on CPSMS.dk.
+CPSMS requires Basic Authorization to access the API. The token is your CPSMS username and your API key, concatenated with a colon, encoded as base64
 
 
-`Authorization: Basic <base64 encoding>`
+`Authorization: Basic <token>`
 
 <aside class="notice">
-Replace <code>&lt;base64 encoding&gt;</code> with your personal API login credentials as base64 encoding.
+Replace <code>&lt;token&gt;</code> with your own. (Username : API key)
 </aside>
 
 
