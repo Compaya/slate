@@ -92,13 +92,21 @@ message <br>**required** | string(1530) | The body text of the SMS message. Spec
 from | string(11/20) | Set the number that the receiver will see as the sender of the SMS. It can be either numeric with a limit of 20 chars or alphanumeric with a limit of 11 chars.
 timestamp | int <br>(unix timestamp) | If specified, the message will be send at this time.
 encoding | string | Default is <code>UTF-8</code>. Alternative <code>ISO-8859-1</code>.
-dlr_url | string | If specified, delivery reports will be POSTed to this address.
+dlr_url | string | If specified, delivery reports will be POSTed to this address.<br> If for example the <code>dlr_url</code> is http://google.com then CPSMS.dk will append ?status=x&receiver=xx <br>Example: http://google.com?status=x&receiver=xx <br><br> If needed you can add your own parameters at the end of your <code>dlr_url</code>.<br><br>See status parameters table.  
 flash | int | Default is <code>0</code>. Specifies if the SMS should be send as a flash SMS.
 reference | string(32) | An optional reference of your choice. 
 
+### Status parameters (dlr_url)
+
+Status | Description 
+--------- | ------- 
+1 | Delivery successful
+2 | Delivery failed
+3 | Message buffered
+4 | Delivery abandoned
 
 <aside class="notice">
-If you specify multiple recipients, your delivery report will contain statuses for every tried delevery. If one, or more, messages fail to be delivered, the delivery report will be returned with a HTTP status code of 207 (Multi-Status) (for easy detection - it has nothing to do with WebDAV, nor do it comply with other RFC standards related to this type of response). In that case, it is advised to traverse the delivery report for errors, and take appropriate action.
+If you specify multiple recipients, your response will contain status for every tried recipient. If one, or more, messages fail to be delivered, the response result will be returned with a HTTP status code of 207 (Multi-Status) (for easy detection - it has nothing to do with WebDAV, nor do it comply with other RFC standards related to this type of response). In that case, it is advised to traverse the response result for errors, and take appropriate action.
 </aside>
 
 
@@ -179,7 +187,7 @@ message <br>**required** | string(1530) | The body text of the SMS message. Spec
 from | string(11/20) | Set the number that the receiver will see as the sender of the SMS. It can be either numeric with a limit of 20 chars or alphanumeric with a limit of 11 chars.
 timestamp | int <br>(unix timestamp) | If specified, the message will be send at this time.
 encoding | string | Default is <code>UTF-8</code>. Alternative <code>ISO-8859-1</code>.
-dlr_url | string | If specified, delivery reports will be POSTed to this address.
+dlr_url | string | If specified, delivery reports will be POSTed to this address. See details in Send example [here](#send).
 flash | int | Default is <code>0</code>. Specifies if the SMS should be send as a flash SMS.
 reference | string(32) | An optional reference of your choice.
 
