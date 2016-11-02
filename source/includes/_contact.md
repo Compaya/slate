@@ -48,7 +48,7 @@ if($httpCode == 200) {
 }
 ```
 
-This endpoint lest you create a new contact or add an existing to a group. If the contact exists in another group it will also be added to the new specified group.  
+This endpoint lets you create a new contact or add an existing contact to a group. If the contact exists in another group it will also be added to the new specified group.  
 
 ### HTTP Request
 <aside class="wrap_request">
@@ -150,7 +150,7 @@ curl -X PUT -H "Authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg==" -
 "contactName":"New contact"
 }
 }
-' "https://api.cpsms.dk/v2/updategroup"
+' "https://api.cpsms.dk/v2/updatecontact"
 ```
 
 ```php
@@ -159,7 +159,7 @@ curl -X PUT -H "Authorization: Basic bGFyc3ZpbmRlcjpHdWxlR3VtbWlzdMO4dmxlcg==" -
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://api.cpsms.dk/v2/updategroup",  
+  CURLOPT_URL => "https://api.cpsms.dk/v2/updatecontact",  
   CURLOPT_CUSTOMREQUEST => "PUT",
   CURLOPT_RETURNTRANSFER => true,
  CURLOPT_POSTFIELDS => '{"phoneNumber": "4595222222" ,"groupId": 11969,"contactName":"New contact"}',
@@ -190,7 +190,7 @@ if($httpCode == 200) {
 }
 ```
 
-This endpoint creates a group for contacts.
+This endpoint updates a contact.
 
 ### HTTP Request
 <aside class="wrap_request">
@@ -254,7 +254,7 @@ if($httpCode == 200) {
 }
 ```
 
-This endpoint you can remove a contact from a group. If the contact is removed from all groups, it will be totally deleted.
+This endpoint removes a contact from a group. If the contact is removed from all groups, it will be completely deleted.
 
 ### HTTP Request
 <aside class="wrap_request">

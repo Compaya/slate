@@ -118,7 +118,7 @@ if($httpCode == 200) {
 
 
 
-This endpoint you can view all your groups. 
+With this endpoint you can view all your groups.
 
 ### HTTP Request
 
@@ -176,7 +176,7 @@ if($httpCode == 200) {
 }
 ```
 
-This endpoint update a group. (For now only the name.)
+This endpoint updates a group.
 
 ### HTTP Request
 <aside class="wrap_request">
@@ -238,7 +238,7 @@ if($httpCode == 200) {
 }
 ```
 
-This endpoint you can delete a group. A group can only be deleted if it do not contain Contacts.
+This endpoint deletes a group. A group can only be deleted if it does not contain Contacts.
 
 ### HTTP Request
 <aside class="wrap_request">

@@ -26,7 +26,7 @@ Get started sending SMS from your own system via CPSMS.dk API.
 This is the documentation listing all endpoints / methods. 
 
 # Getting started
-. | .
+Info | Value
 --------- | ------- 
 Host | api.cpsms.dk/v2
 Port | 443
@@ -47,10 +47,10 @@ You get the first 10 SMS points for free.
 
 You have to generate a API key at [cpsms.dk](https://cpsms.dk/login).<br>
 This is the password to use the API.<br>
-Navigate to <code>INDSTILLINGER -> API</code> section and then generate a API key.
+Navigate to the <code>INDSTILLINGER -> API</code> section and then generate an API key.
 
 <aside class="notice">
-For extra security you can turn on IP validating and add the IP adresses('s) you want to allow.
+For extra security you can turn on IP validation and add the IP address(es) you want to allow.
 </aside>
 
 
@@ -59,7 +59,7 @@ For extra security you can turn on IP validating and add the IP adresses('s) you
 Data can be send as GET parameters or posted as a JSON object. Except for SMS and GroupSMS endpoints. - these requires data to be send as JSON objects<br>
 It is not possible to use a mix of GET parameters and a JSON object.<br><br>
 The HTTP requests show examples with parameters set as GET.<br>
-The code examples is as JSON objects.
+The code examples are shown as JSON objects.
  
 
  

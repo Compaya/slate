@@ -68,9 +68,9 @@ if ($err) {
 ]
 ```
 
-This endpoint gives the possibility to request your sms log. <br>
-You can go back 3 month total, from today. If you do not add start and end date. <br>
-It's possible to add a receiver with and without start/end dates.
+This endpoint requests your SMS log. <br>
+You can look back a maximum of 3 months from current time, and the log will be shown that far back if you do not add start and end date. <br>
+It’s possible to request a specific <code>&lt;to&gt;</code> with or without start/end dates.
 
 <aside class="notice">
 This request is restricted to 1 request every 2 minutes.
